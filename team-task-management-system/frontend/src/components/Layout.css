@@ -1,0 +1,199 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main {
+  display: flex;
+  flex: 1;
+  padding-top: 60px;
+  /* Account for fixed navbar height */
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 0;
+  /* No margin since navbar starts after SideNav */
+  transition: margin-left 0.3s ease;
+  min-height: calc(100vh - 60px);
+  background: #f8fafc;
+  padding: 2rem;
+}
+
+/* Adjust when SideNav is collapsed */
+.sidenav.collapsed~.layout-main .main-content {
+  margin-left: 0;
+}
+
+.sidenav.collapsed~.layout-main {
+  margin-left: 0;
+  /* Remove margin - let navbar handle positioning */
+}
+
+.sidenav.collapsed+.mobile-menu-toggle {
+  left: 90px;
+  /* Position after collapsed SideNav */
+}
+
+/* Navbar Container */
+.navbar {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  top: 0;
+  left: 280px;
+  /* Start after SideNav */
+  right: 0;
+  z-index: 1000;
+  height: 60px;
+}
+
+.navbar-shifted {
+  margin-left: 0;
+  padding-left: 3rem;
+}
+
+.navbar-brand a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: #e5e7eb;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Hamburger Toggle */
+.hamburger-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  margin-right: 1rem;
+}
+
+.hamburger-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* User Actions */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid #ef4444;
+  color: #ef4444;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* User Welcome Message */
+.user-welcome {
+  color: #e5e7eb;
+  font-weight: 500;
+  margin-right: 1rem;
+  font-size: 0.875rem;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .hamburger-toggle {
+    display: flex;
+  }
+
+  .navbar-left .nav-link:not(.brand) {
+    display: none;
+  }
+
+  .logout-btn span {
+    display: none;
+  }
+
+  .navbar {
+    left: 0;
+    padding-left: 60px; /* Increased to avoid overlap with hamburger */
+    /* Add padding for hamburger menu */
+    padding-right: 1rem;
+  }
+
+  .navbar-right {
+    margin-left: auto;
+  }
+
+  .user-welcome {
+    display: none;
+    /* Hide welcome text on mobile */
+  }
+
+  .layout-main {
+    margin-left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .sidenav.collapsed~.layout-main {
+    margin-left: 0;
+  }
+}
